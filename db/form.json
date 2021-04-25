@@ -1,0 +1,10 @@
+{
+	"fields":
+	[
+		"Name",
+		"E-mail",
+		"Phone number",
+		"City"
+	],
+	"confirmText": "Subscribe"
+}
