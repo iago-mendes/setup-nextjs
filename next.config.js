@@ -6,5 +6,8 @@ module.exports = withImages(
 	publicRuntimeConfig:
 	{},
 	serverRuntimeConfig:
-	{}
+	{
+		mongodbUri: process.env.MONGODB_URI,
+		mongodbDb: process.env.MONGODB_DB
+	}
 })
