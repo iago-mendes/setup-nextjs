@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import {FormEvent, useState} from 'react'
+import api from '../services/api'
 
 import Container from '../styles/pages/index'
 
@@ -10,9 +11,27 @@ const Home: React.FC = () =>
 	const [phone, setPhone] = useState('')
 	const [topic, setTopic] = useState('')
 
-	function handleSubmit(e: FormEvent)
+	async function handleSubmit(e: FormEvent)
 	{
 		e.preventDefault()
+
+		const data =
+		{
+			name,
+			email,
+			phone,
+			topic
+		}
+
+		await api.post('submit', data)
+			.then(() =>
+			{
+				alert('Success!')
+			})
+			.catch(error =>
+			{
+				alert(error.response.data.message)
+			})
 	}
 
 	return (

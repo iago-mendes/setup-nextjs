@@ -8,8 +8,11 @@ let cached = (global as any).mongo
 if (!cached)
 	cached = (global as any).mongo = {conn: null, promise: null}
 
-export async function connectToDatabase(): Promise<{client: MongoClient, db: Db}>
+async function connect(): Promise<{client: MongoClient, db: Db}>
 {
+	console.log('<< env >>', env)
+	console.log('<< env.mongodbUri >>', env.mongodbUri)
+
 	if (cached.conn)
 		return cached.conn
 
@@ -33,3 +36,5 @@ export async function connectToDatabase(): Promise<{client: MongoClient, db: Db}
 	cached.conn = await cached.promise
 	return cached.conn
 }
+
+export default connect
